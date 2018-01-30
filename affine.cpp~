@@ -1,73 +1,46 @@
 #include <iostream>
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>//imshowなど
+#include <opencv2/imgproc/imgproc.hpp> //resizeなど
 
-#include "opencv2/highgui/highgui.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
 
 using namespace cv;
 
-const char* WINDOW_NAME = "Affine Transform Demo";
-Mat img, tmp;
-Point2f srcTri[3], dstTri[3];
-int ptr = 0;
-Scalar circleColors[] = {
-    Scalar(255, 0, 0),
-    Scalar(0, 255, 0),
-    Scalar(0, 0, 255)
-};
+int
+main(int argc, char  *argv[])
+{
+	//display makibao original
+	Mat im;
+	im = imread(argv[1],1);
+	//imshow("original",im);
+	waitKey(1000);
 
-void applyAfineTransform() {
+	// 変換前の三点
+  	const Point2f src_pt[] = { Point2f(150, 150), Point2f(150, 190), Point2f(190, 200) };
+ 	// 変換後の三点
+ 	const Point2f dst_pt[] = { Point2f(100, 100), Point2f(100, 70), Point2f(50, 70) };
+  	// これらから，アフィン変換行列を計算
+  	const Mat affine_matrix = getAffineTransform(src_pt, dst_pt);
 
-    std::cout << "------------------------------------------" << std::endl;
-    std::cout << "Affine Transform begin." << std::endl;
-    for (int i = 0; i < 3; i++) {
-        std::cout << srcTri[i] << " is mapped to " << dstTri[i] << std::endl;
-    }
+  	std::cout << "affine_matrix=\n" << affine_matrix << std::endl;
 
-    /// Get Affine matrix from mapping info
-    Mat affine_mat = getAffineTransform(srcTri, dstTri);
+  	Mat dst_img;
+ 	warpAffine(im, dst_img, affine_matrix, im.size());
+  
+  	// 変換前後の座標を描画
+ 	line(im, src_pt[0], src_pt[1], Scalar(255,255,0), 2);
+  	line(im, src_pt[1], src_pt[2], Scalar(255,255,0), 2);
+  	line(im, src_pt[2], src_pt[0], Scalar(255,255,0), 2);
+  	line(im, dst_pt[0], dst_pt[1], Scalar(255,0,255), 2);
+  	line(im, dst_pt[1], dst_pt[2], Scalar(255,0,255), 2);
+  	line(im, dst_pt[2], dst_pt[0], Scalar(255,0,255), 2);
 
-    /// Apply Affine transform
-    warpAffine(img, img, affine_mat, img.size());
-        
-    tmp = img.clone();
-    imshow(WINDOW_NAME, img);
+  	namedWindow("src", CV_WINDOW_AUTOSIZE|CV_WINDOW_FREERATIO);
+  	namedWindow("dst", CV_WINDOW_AUTOSIZE|CV_WINDOW_FREERATIO);
+  	imshow("src", im);
+  	imshow("dst", dst_img);
+  	waitKey(0);
 
-    std::cout << "Affine Transform end." << std::endl << std::endl;
+	return(0);
 
-}
-
-void mouseClick(int event, int x, int y, int flags, void* userdata) {
-
-    if (event != EVENT_LBUTTONDOWN) 
-        return;
-
-    Point2f point(x, y);
-    
-    if (ptr % 2 == 0)
-        srcTri[ptr/2] = point;
-    else
-        dstTri[ptr/2] = point;
-
-    circle(tmp, point, 6, circleColors[ptr/2], -1, 8, 0);
-    imshow(WINDOW_NAME, tmp);
-
-    if (++ptr >= 6) {
-        ptr = 0;
-        applyAfineTransform();
-    }
-
-}
-
-int main( int, char** argv ) {
-
-    img = imread(argv[1], 1);
-    tmp = img.clone();
-
-    namedWindow(WINDOW_NAME, WINDOW_AUTOSIZE);
-    setMouseCallback(WINDOW_NAME, mouseClick, NULL);
-    imshow(WINDOW_NAME, img);
-
-    waitKey(0);
-
-    return 0;
 }

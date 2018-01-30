@@ -1,3 +1,4 @@
 /home/pancho/opencv_practice_ws/build/CMakeFiles/affine.dir
+/home/pancho/opencv_practice_ws/build/CMakeFiles/rotate.dir
 /home/pancho/opencv_practice_ws/build/CMakeFiles/test_opencv.dir
 /home/pancho/opencv_practice_ws/build/CMakeFiles/triming.dir

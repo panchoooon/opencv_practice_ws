@@ -88,13 +88,48 @@ clean: CMakeFiles/affine.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/rotate.dir
+
+# All Build rule for target.
+CMakeFiles/rotate.dir/all:
+	$(MAKE) -f CMakeFiles/rotate.dir/build.make CMakeFiles/rotate.dir/depend
+	$(MAKE) -f CMakeFiles/rotate.dir/build.make CMakeFiles/rotate.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pancho/opencv_practice_ws/build/CMakeFiles  2
+	@echo "Built target rotate"
+.PHONY : CMakeFiles/rotate.dir/all
+
+# Include target in all.
+all: CMakeFiles/rotate.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/rotate.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pancho/opencv_practice_ws/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rotate.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pancho/opencv_practice_ws/build/CMakeFiles 0
+.PHONY : CMakeFiles/rotate.dir/rule
+
+# Convenience name for target.
+rotate: CMakeFiles/rotate.dir/rule
+.PHONY : rotate
+
+# clean rule for target.
+CMakeFiles/rotate.dir/clean:
+	$(MAKE) -f CMakeFiles/rotate.dir/build.make CMakeFiles/rotate.dir/clean
+.PHONY : CMakeFiles/rotate.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/rotate.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/test_opencv.dir
 
 # All Build rule for target.
 CMakeFiles/test_opencv.dir/all:
 	$(MAKE) -f CMakeFiles/test_opencv.dir/build.make CMakeFiles/test_opencv.dir/depend
 	$(MAKE) -f CMakeFiles/test_opencv.dir/build.make CMakeFiles/test_opencv.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pancho/opencv_practice_ws/build/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pancho/opencv_practice_ws/build/CMakeFiles  3
 	@echo "Built target test_opencv"
 .PHONY : CMakeFiles/test_opencv.dir/all
 
@@ -129,7 +164,7 @@ clean: CMakeFiles/test_opencv.dir/clean
 CMakeFiles/triming.dir/all:
 	$(MAKE) -f CMakeFiles/triming.dir/build.make CMakeFiles/triming.dir/depend
 	$(MAKE) -f CMakeFiles/triming.dir/build.make CMakeFiles/triming.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pancho/opencv_practice_ws/build/CMakeFiles  3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pancho/opencv_practice_ws/build/CMakeFiles  4
 	@echo "Built target triming"
 .PHONY : CMakeFiles/triming.dir/all
 

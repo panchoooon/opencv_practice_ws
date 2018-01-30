@@ -6,14 +6,14 @@
 
 #IncludeRegexTransform: 
 
-/home/pancho/opencv_practice_ws/affine.cpp
+/home/pancho/opencv_practice_ws/rotate.cpp
 iostream
 -
 opencv2/core/core.hpp
 -
-opencv2/highgui/highgui.hpp
--
 opencv2/imgproc/imgproc.hpp
+-
+opencv2/highgui/highgui.hpp
 -
 
 /usr/local/include/opencv2/core/core.hpp

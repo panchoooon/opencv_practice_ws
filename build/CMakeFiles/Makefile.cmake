@@ -48,6 +48,7 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/affine.dir/DependInfo.cmake"
+  "CMakeFiles/rotate.dir/DependInfo.cmake"
   "CMakeFiles/test_opencv.dir/DependInfo.cmake"
   "CMakeFiles/triming.dir/DependInfo.cmake"
   )

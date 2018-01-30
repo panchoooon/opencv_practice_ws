@@ -14,5 +14,9 @@ add_executable (triming triming.cpp)
 target_link_libraries(triming ${OpenCV_LIBS})
 
 #for affine.cpp
-add_executable (affine affine.cpp)
+add_executable(affine affine.cpp)
 target_link_libraries(affine ${OpenCV_LIBS})
+
+#for rotate.cpp
+add_executable(rotate rotate.cpp)
+target_link_libraries(rotate ${OpenCV_LIBS})
